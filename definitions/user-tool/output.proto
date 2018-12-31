@@ -1,0 +1,41 @@
+message UserUpdate {
+  required string _id = 0;
+
+  message CONNECTIONS {
+
+    message TWITCH {
+      required string _id = 0;
+      optional string name = 1;
+      optional string displayName = 2;
+      optional string id = 3;
+      optional string logo = 4;
+      optional string email = 5;
+      optional string oauthToken = 6;
+      optional string refreshToken = 7;
+      optional string expiresAt = 8;
+    }
+
+    optional TWITCH twitch = 0;
+
+    message TWITTER {
+      required string _id = 0;
+      optional string handle = 1;
+    }
+
+    optional TWITTER twitter = 1;
+  }
+
+  optional CONNECTIONS connections = 1;
+  optional string flag = 2;
+
+  message ROLES {
+    required string _id = 0;
+    optional string event = 1;
+    optional string role = 2;
+  }
+
+  repeated ROLES roles = 3;
+  optional double __v = 4;
+  optional string phone_display = 5;
+  optional string phone_encrypted = 6;
+}
