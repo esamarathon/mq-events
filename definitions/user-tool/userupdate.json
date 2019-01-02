@@ -3,7 +3,8 @@
     "vHost": "not.sure",
     "name": "UserChanged",
     "queue": "user-changed",
-    "ownerTool": "UserTool"
+    "ownerTool": "UserTool",
+    "accessControl": "jwt.id === this._id"
   },
   "_id": { "$type": "id", "$required": true, "$description": "The user-tool database ID of this user" },
   "flag": "string",
