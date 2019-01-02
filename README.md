@@ -2,7 +2,7 @@
 Repository holding information about the events published to our Message Queue server.
 
 
-Each application should add a new folder to the repository where they may add a README.md file describing the events and their usage, as well as Protobuf files describing any datatypes used.
+Each application should add a new folder to the repository where they may add a README.md file describing the events and their usage, as well as .json files describing any events emitted.
 
 A application must prescribe all events they own, on which Vhost, Payload structure and queue name.
 
