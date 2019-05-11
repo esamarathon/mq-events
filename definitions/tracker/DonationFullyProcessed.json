@@ -1,0 +1,15 @@
+{
+  "$meta": {
+    "vHost": "not.sure",
+    "name": "DonationFullyProcessed",
+    "queue": "donation-fully-prcoessed",
+    "ownerTool": "Tracker"
+  },
+  "event": { "$type": "string", "$required": true, "$description": "Shorthand event string this donation is for." },
+  "_id": { "$type": "id", "$required": true, "$description": "Unique donation ID from the database." },
+  "donor_visiblename": { "$type": "string", "$required": true, "$description": "The name of the donor that they would like to appear as publicly (can be (Anonymous))." },
+  "amount": { "$type": "number", "$required": true, "$description": "The amount this donation is for. Currency isn't specified but is (currently) USD." },
+  "comment_state": { "$type": "string", "$required": true, "$description": "If the donation comment was accepted/rejected. Should be APPROVED or DENIED, rarely could be something else if something server side messes up; treat anything that isn't APPROVED as if it was DENIED." },
+  "comment": { "$type": "string", "$required": false, "$description": "Donator's comment. Can be blank; is made blank if their comment was rejected." },
+  "time_received": { "$type": "string", "$required": true, "$description": "Time stamp of when the donation was received." }
+}
