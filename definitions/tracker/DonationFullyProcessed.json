@@ -2,7 +2,7 @@
   "$meta": {
     "vHost": "not.sure",
     "name": "DonationFullyProcessed",
-    "queue": "donation-fully-prcoessed",
+    "queue": "donation-fully-processed",
     "ownerTool": "Tracker"
   },
   "event": { "$type": "string", "$required": true, "$description": "Shorthand event string this donation is for." },
