@@ -1,0 +1,14 @@
+{
+  "$meta": {
+    "vHost": "not.sure",
+    "name": "NewScreenedSub",
+    "queue": "new-screened-sub",
+    "ownerTool": "OmnibarModerationTool"
+  },
+  "message": {
+    "trailing":  { "$type": "string", "$required": false, "$description": "The message following the system message." },
+    "tags": {
+      "system-msg": { "$type": "string", "$required": true, "$description": "The system message supplied by Twitch." }
+    }
+  }
+}
