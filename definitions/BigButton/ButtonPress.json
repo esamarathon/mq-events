@@ -10,6 +10,6 @@
   "button_message_count":{ "$type": "number", "$required": false, "$description": "used to troubleshoot message delivery issues" },
   "time":[{
 	"unix":{ "$type": "number", "$required": true, "$description": "time button was pressed in second since unix epoc" },
-	"iso": { "$type": "number", "$required": true, "$description": "same as unix but in ISO 8601 format" }
+	"iso": { "$type": "string", "$required": true, "$description": "same as unix but in ISO 8601 format" }
   }]
 }
