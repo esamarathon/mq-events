@@ -1,0 +1,11 @@
+{
+  "$meta": {
+    "vHost": "not.sure",
+    "name": "ButtonIP",
+    "queue": "BigButton_info",
+    "ownerTool": "SpeedControler"
+  },
+  "button_id":{ "$type": "id", "$required": true, "$description": "ID of button" },
+  "button_ip_address":{ "$type": "strinf", "$required": false, "$description": "sent by pi on startup as diagnostics , make its easy to find what ip address to VNC into" },
+
+}
