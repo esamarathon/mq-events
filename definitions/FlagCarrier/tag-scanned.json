@@ -1,0 +1,16 @@
+{
+  "$meta": {
+    "vHost": "not.sure",
+    "name": "tag-scanned",
+    "queue": "flagcarrier-tag-scanned",
+    "ownerTool": "FlagCarrier"
+  },
+  "flagcarrier": {
+    "id": { "$type": "string", "$required": true, "$description": "ID of the terminal that scanned the tag (BRB1, ...)" },
+    "time": { "$type": "number", "$required": true, "$description": "Unix Timestamp of when the tag was scanned" },
+  },
+  "user" : {
+    "id": { "$type": "id", "$required": false, "$description": "UserTool ID of the user who scanned the tag (if known)" },
+    "displayName": { "$type": "id", "$required": false, "$description": "UserTool ID of the user who scanned the tag (if known)" },
+  }
+}
