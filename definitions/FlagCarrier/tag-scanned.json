@@ -8,11 +8,13 @@
   "flagcarrier": {
     "id": { "$type": "string", "$required": true, "$description": "ID of the terminal that scanned the tag (BRB1, ...)" },
     "time": { "$type": "number", "$required": true, "$description": "Unix Timestamp of when the tag was scanned" },
+    "uid": { "$type": "string", "$required": true, "$description": "NFC tag UID as hex string" },
     "validSignature": { "$type": "boolean", "$required": false, "$description": "Indicates if tag had a valid signature" },
     "pubKey": { "$type": "string", "$required": false, "$description": "base64 encoded ed25519 public key used to verify the tag" }
   },
   "user" : {
     "id": { "$type": "id", "$required": false, "$description": "UserTool ID of the user who scanned the tag (if known)" },
     "displayName": { "$type": "id", "$required": true, "$description": "UserTool ID of the user who scanned the tag (if known)" }
-  }
+  },
+  "raw": { "$type": "dict", "$required": true, "$description": "Raw dump of scanned tags Key->Value data" }
 }
