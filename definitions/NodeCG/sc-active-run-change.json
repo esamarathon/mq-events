@@ -1,0 +1,13 @@
+{
+  "$meta": {
+    "vHost": "esa_prod",
+    "name": "sc-active-run-change",
+    "queue": "sc-active-run-change",
+    "ownerTool": "NodeCG"
+  },
+  "run": { "$type": "object", "$required": false, "$description": "Object of the run data from nodecg-speedcontrol. If this is not supplied, no run is set." },
+  "time": {
+    "unix": { "$type": "number", "$required": true, "$description": "Time scene was changed in seconds since UNIX Epoch." },
+    "iso": { "$type": "string", "$required": true, "$description": "Time scene was changed in ISO 8601 format." }
+  }
+}
