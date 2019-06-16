@@ -7,7 +7,7 @@
   },
   "flagcarrier": {
     "id": { "$type": "string", "$required": true, "$description": "ID of the terminal that scanned the tag (BRB1, ...)" },
-    "time": { "$type": "number", "$required": true, "$description": "Unix Timestamp of when the tag was scanned (µs)" },
+    "time": { "$type": "number", "$required": true, "$description": "Unix Timestamp of when the tag was scanned (ms)" },
     "uid": { "$type": "string", "$required": true, "$description": "NFC tag UID as hex string" },
     "validSignature": { "$type": "boolean", "$required": false, "$description": "Indicates if tag had a valid signature" },
     "pubKey": { "$type": "string", "$required": false, "$description": "base64 encoded ed25519 public key used to verify the tag" }
