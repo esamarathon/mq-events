@@ -1,0 +1,36 @@
+All exchanges are of type "topic", durable, auto-delete ON.
+Per-Application receiving queues should have an expiry (x-expires property) to not clutter the server forever.
+I'd suggest something like 4 hours, to bridge any kind of connectivity issues or outages.
+
+exchange:
+    cg
+topics:
+    obs.scene.<scene_name>.{start,end}{,.gamescene}
+    run.changed
+    timer.{started,paused,resumed,finished,reset,edited}
+    timer.team.<teamID>.{finished,undid_finish}
+
+exchange:
+    bigbutton
+topics:
+    <button_id>.ip_addr
+    <button_id>.pressed
+    <button_id>.rgb
+    <button_id>.tag_scanned
+
+exchange:
+    users
+topics:
+    user.<user_id>.updated
+
+exchange:
+    moderation
+topics:
+    screened.sub
+    screened.tweet
+
+exchange:
+    tracker
+topics:
+    donation.<donation_id>.fully_processed
+    donation_total.updated
