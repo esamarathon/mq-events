@@ -7,6 +7,7 @@ exchange:
 topics:
     obs.scene.<scene_name>.{start,end}{,.gamescene}
     run.changed
+    sponsor.logo.changed
     timer.{started,paused,resumed,finished,reset,edited}
     timer.team.<teamID>.{finished,undid_finish}
 
