@@ -5,11 +5,11 @@ I'd suggest something like 4 hours, to bridge any kind of connectivity issues or
 exchange:
     cg
 topics:
-    obs.scene.<scene_name>.{start,end}{,.gamescene}
-    run.changed
-    sponsor.logo.changed
-    timer.{started,paused,resumed,finished,reset,edited}
-    timer.team.<teamID>.{finished,undid_finish}
+    <event_name>.obs.scene.<scene_name>.{start,end}{,.gamescene}
+    <event_name>.run.changed
+    <event_name>.sponsor.logo.changed
+    <event_name>.timer.{started,paused,resumed,finished,reset,edited}
+    <event_name>.timer.team.<teamID>.{finished,undid_finish}
 
 exchange:
     bigbutton
@@ -33,5 +33,5 @@ topics:
 exchange:
     tracker
 topics:
-    donation.<donation_id>.fully_processed
-    donation_total.updated
+    <event_name>.donation.<donation_id>.fully_processed
+    <event_name>.donation_total.updated
