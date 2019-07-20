@@ -29,6 +29,7 @@ exchange:
 topics:
     screened.sub
     screened.tweet
+    screened.cheer
 
 exchange:
     tracker

@@ -1,0 +1,14 @@
+{
+  "$meta": {
+    "vHost": "not.sure",
+    "name": "NewScreenedCheer",
+    "queue": "new-screened-cheer",
+    "ownerTool": "OmnibarModerationTool"
+  },
+  "message": {
+    "trailing":  { "$type": "string", "$required": true, "$description": "The message text." },
+    "tags": {
+      "bits": { "$type": "string", "$required": true, "$description": "The amount of bits cheered by the user." }
+    }
+  }
+}
