@@ -20,7 +20,8 @@ The schema consists of a `$meta` section consisting of the following properties 
 "$meta": {
   "VHost": VHost this event is emit to,
   "name": Name of this message type,
-  "queue": RabbitMQ queue name this event is emit to,
+  "exchange": RabbitMQ exchange name this event is emit to,
+  "routingKey": RabbitMQ routing key (topic) this event is emitted to,
   "ownerTool": Name of the tool that controls this event
   "accessControl": (optional) access control code (see below)
 }
@@ -67,7 +68,8 @@ A full template that can be used to get started setting up a new message
   "$meta": {
     "vHost": "vhost.domain.tld",
     "name": "EventName",
-    "queue": "queue-name",
+    "exchange": "exchange",
+    "routingKey": "routing.key.for.event",
     "ownerTool": "ToolName"
   },
   "_id": { "$type": "id", "$required": true, "$description": "The database ID of the affected item" }
