@@ -30,6 +30,7 @@ topics:
     screened.sub
     screened.tweet
     screened.cheer
+    screened.crowdcontrol
 
 exchange:
     tracker
