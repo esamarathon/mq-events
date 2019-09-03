@@ -10,6 +10,15 @@ Two applications may not prescribe the same event in the case there is overlap i
 
 Which application is the one to control the event is to be decided between the projects. If no agreement can be made, the Head of Production will have the final word and may consult other members and organizers if they so choose.
 
+## Exchanges
+
+All exchanges are of type `topic`, durable, auto-delete ON.
+
+Per-application receiving queues should have an expiry (`x-expires` property) to not clutter the server forever.
+
+Suggest value is around 4 hours to bridge any kind of connectivity issues or outages.
+
+
 ## Event definition format
 
 A document describing and event shall be a .json file containing a single JSON object that describes the format of the message in the [JSON Schema](https://json-schema.org/) format, using the `schemas/event-schema.json` schema from this repository.
