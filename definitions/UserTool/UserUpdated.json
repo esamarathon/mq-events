@@ -1,46 +1,137 @@
 {
-  "$meta": {
-    "vHost": "not.sure",
-    "name": "UserChanged",
-    "queue": "user-changed",
-    "ownerTool": "UserTool",
-    "accessControl": "jwt.id === this._id"
-  },
-  "_id": { "$type": "id", "$required": true, "$description": "The user-tool database ID of this user" },
-  "flag": "string",
-  "connections": {
-    "twitch": {
-      "name": "string",
-      "displayName": "string",
-      "id": "string",
-      "logo": "string",
-      "email": "string",
-      "oauthToken": "string",
-      "refreshToken": "string",
-      "expiresAt": "string"
-    },
-    "discord": {
-      "name": "string",
-      "oauthToken": "string",
-      "refreshToken": "string",
-      "expiresAt": "string"
-    },
-    "speedrun": {
-      "name": "string",
-      "token": "string"
-    },
-    "twitter": {
-      "handle": "string"
-    }
-  },
-  "phone_display": "string",
-  "phone_encrypted": "string",
-  "roles": [{
-    "event": { "$type": "string", "$description": "The event id for which this role is designated, or null if it is for all events." },
-    "role": {
-      "name": "string",
-      "special": "boolean",
-      "permissions": { "$type": ["string"], "$description": "A list of permission names. The available permissions can be found in the user tool settings, usually in settings.default.json, unless they are overwritten in settings.json" }
-    }
-  }]
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"vHost": "not.sure",
+		"name": "UserUpdated",
+		"exchange": "users",
+		"routingKey": "user.<user_id>.updated",
+		"ownerTool": "UserTool",
+		"accessControl": "jwt.id === this._id"
+	},
+	"required": [
+		"_id"
+	],
+	"properties": {
+		"_id": {
+			"type": "string",
+			"description": "The user-tool database ID of this user"
+		},
+		"flag": {
+			"type": "string"
+		},
+		"connections": {
+			"type": "object",
+			"properties": {
+				"twitch": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"displayName": {
+							"type": "string"
+						},
+						"id": {
+							"type": "string"
+						},
+						"logo": {
+							"type": "string"
+						},
+						"email": {
+							"type": "string"
+						},
+						"oauthToken": {
+							"type": "string"
+						},
+						"refreshToken": {
+							"type": "string"
+						},
+						"expiresAt": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				},
+				"discord": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"oauthToken": {
+							"type": "string"
+						},
+						"refreshToken": {
+							"type": "string"
+						},
+						"expiresAt": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				},
+				"speedrun": {
+					"type": "object",
+					"properties": {
+						"name": {
+							"type": "string"
+						},
+						"token": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				},
+				"twitter": {
+					"type": "object",
+					"properties": {
+						"handle": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		},
+		"phone_display": {
+			"type": "string"
+		},
+		"phone_encrypted": {
+			"type": "string"
+		},
+		"roles": {
+			"type": "array",
+			"items": {
+				"type": "object",
+				"properties": {
+					"event": {
+						"type": ["null", "string"],
+						"description": "The event id for which this role is designated, or null if it is for all events."
+					},
+					"role": {
+						"type": "object",
+						"properties": {
+							"name": {
+								"type": "string"
+							},
+							"special": {
+								"type": "boolean"
+							},
+							"permissions": {
+								"type": "array",
+								"description": "A list of permission names. The available permissions can be found in the user tool settings, usually in settings.default.json, unless they are overwritten in settings.json",
+								"items": {
+									"type": "string"
+								}
+							}
+						},
+						"additionalProperties": false
+					}
+				},
+				"additionalProperties": false
+			}
+		}
+	},
+	"additionalProperties": false
 }

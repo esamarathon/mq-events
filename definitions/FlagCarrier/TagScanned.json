@@ -1,20 +1,81 @@
 {
-  "$meta": {
-    "vHost": "not.sure",
-    "name": "tag-scanned",
-    "queue": "flagcarrier-tag-scanned",
-    "ownerTool": "FlagCarrier"
-  },
-  "flagcarrier": {
-    "id": { "$type": "string", "$required": true, "$description": "ID of the terminal that scanned the tag (BRB1, ...)" },
-    "time": { "$type": "number", "$required": true, "$description": "Unix Timestamp of when the tag was scanned (ms)" },
-    "uid": { "$type": "string", "$required": true, "$description": "NFC tag UID as hex string" },
-    "validSignature": { "$type": "boolean", "$required": false, "$description": "Indicates if tag had a valid signature" },
-    "pubKey": { "$type": "string", "$required": false, "$description": "base64 encoded ed25519 public key used to verify the tag" }
-  },
-  "user" : {
-    "id": { "$type": "id", "$required": false, "$description": "UserTool ID of the user who scanned the tag (if known)" },
-    "displayName": { "$type": "id", "$required": true, "$description": "UserTool ID of the user who scanned the tag (if known)" }
-  },
-  "raw": { "$type": "dict", "$required": true, "$description": "Raw dump of scanned tags Key->Value data" }
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"vHost": "not.sure",
+		"name": "TagScanned",
+		"exchange": "bigbutton",
+		"routingKey": "<button_id>.tag_scanned",
+		"ownerTool": "FlagCarrier"
+	},
+	"required": [
+		"flagcarrier",
+		"user",
+		"raw"
+	],
+	"properties": {
+		"flagcarrier": {
+			"type": "object",
+			"required": [
+				"id",
+				"group",
+				"time",
+				"uid"
+			],
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "ID of the terminal that scanned the tag (BRB1, ...)",
+					"default": "unset"
+				},
+				"group": {
+					"type": "string",
+					"description": "Group of the terminal that scanned the tag",
+					"default": "unset"
+				},
+				"time": {
+					"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+					"description": "Timestamp of when the tag was scanned"
+				},
+				"uid": {
+					"type": "string",
+					"description": "NFC tag UID as hex string"
+				},
+				"validSignature": {
+					"type": "boolean",
+					"description": "Indicates if tag had a valid signature"
+				},
+				"pubKey": {
+					"type": "string",
+					"description": "Base64 encoded ed25519 public key used to verify the tag"
+				}
+			},
+			"additionalProperties": false
+		},
+		"user": {
+			"type": "object",
+			"required": [
+				"displayName"
+			],
+			"properties": {
+				"id": {
+					"type": "string",
+					"description": "UserTool ID of the user who scanned the tag (if known)"
+				},
+				"displayName": {
+					"type": "string",
+					"description": "UserTool display name of the user who scanned the tag",
+					"default": "*unset*"
+				}
+			},
+			"additionalProperties": false
+		},
+		"raw": {
+			"type": "object",
+			"description": "Raw dump of scanned tags Key->Value data",
+			"additionalProperties": {
+				"type": "string"
+			}
+		}
+	},
+	"additionalProperties": false
 }

@@ -1,12 +1,38 @@
 {
-  "$meta": {
-    "vHost": "not.sure",
-    "name": "ButtonRGB",
-    "queue": "BigButton_RGB",
-    "ownerTool": "BigButton"
-  },
-  "button_id":{ "$type": "id", "$required": true, "$description": "ID of button" },
-  "button_R":{ "$type": "number", "$required": false, "$description": "256 bit red color component" },
-  "button_G":{ "$type": "number", "$required": false, "$description": "256 bit green color component" },
-  "button_B":{ "$type": "number", "$required": false, "$description": "256 bit blue color component" },
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"vHost": "not.sure",
+		"name": "ButtonRGB",
+		"exchange": "bigbutton",
+		"routingKey": "<button_id>.rgb",
+		"ownerTool": "BigButton"
+	},
+	"required": [
+		"button_id"
+	],
+	"properties": {
+		"button_id": {
+			"type": "string",
+			"description": "ID of the button"
+		},
+		"button_R": {
+			"type": "integer",
+			"description": "8 bit red color component",
+			"minimum": 0,
+			"maximum": 255
+		},
+		"button_G": {
+			"type": "integer",
+			"description": "8 bit green color component",
+			"minimum": 0,
+			"maximum": 255
+		},
+		"button_B": {
+			"type": "integer",
+			"description": "8 bit blue color component",
+			"minimum": 0,
+			"maximum": 255
+		}
+	},
+	"additionalProperties": false
 }

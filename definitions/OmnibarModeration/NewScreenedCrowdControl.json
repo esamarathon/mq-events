@@ -1,11 +1,27 @@
 {
-  "$meta": {
-    "vHost": "not.sure",
-    "name": "NewScreenedCrowdControl",
-    "queue": "new-screened-crowdcontrol",
-    "ownerTool": "OmnibarModerationTool"
-  },
-  "message": {
-    "trailing":  { "$type": "string", "$required": true, "$description": "The message that WarpWorldBot originally posted in Twitch chat." }
-  }
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"vHost": "not.sure",
+		"name": "NewScreenedCrowdControl",
+		"exchange": "moderation",
+		"routingKey": "screened.crowdcontrol",
+		"ownerTool": "OmnibarModeration"
+	},
+	"required": [
+		"message"
+	],
+	"properties": {
+		"message": {
+			"type": "object",
+			"required": [
+				"trailing"
+			],
+			"properties": {
+				"trailing": {
+					"type": "string",
+					"description": "The message that WarpWorldBot originally posted in Twitch chat."
+				}
+			}
+		}
+	}
 }

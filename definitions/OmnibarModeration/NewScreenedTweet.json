@@ -1,14 +1,43 @@
 {
-  "$meta": {
-    "vHost": "not.sure",
-    "name": "NewScreenedTweet",
-    "queue": "new-screened-tweet",
-    "ownerTool": "OmnibarModerationTool"
-  },
-  "message": {
-    "full_text":  { "$type": "string", "$required": true, "$description": "Contents of the tweet." }
-  },
-  "user": {
-    "name":  { "$type": "string", "$required": true, "$description": "Name of the Twitter user who sent the tweet." }
-  }
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"vHost": "not.sure",
+		"name": "NewScreenedTweet",
+		"exchange": "moderation",
+		"routingKey": "screened.tweet",
+		"ownerTool": "OmnibarModeration"
+	},
+	"required": [
+		"message",
+		"user"
+	],
+	"properties": {
+		"message": {
+			"type": "object",
+			"required": [
+				"full_text"
+			],
+			"properties": {
+				"full_text": {
+					"type": "string",
+					"description": "Contents of the tweet."
+				}
+			},
+			"additionalProperties": false
+		},
+		"user": {
+			"type": "object",
+			"required": [
+				"name"
+			],
+			"properties": {
+				"name": {
+					"type": "string",
+					"description": "Name of the Twitter user who sent the tweet."
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"additionalProperties": false
 }

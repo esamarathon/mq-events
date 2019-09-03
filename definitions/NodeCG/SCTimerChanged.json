@@ -1,16 +1,50 @@
 {
-  "$meta": {
-    "vHost": "esa_prod",
-    "name": "sc-timer-change",
-    "queue": "sc-timer-change",
-    "ownerTool": "NodeCG"
-  },
-  "event": { "$type": "string", "$required": true, "$description": "Short name for the physical event this message was for, usually the same as the donation tracker." },
-  "desc": { "$type": "string", "$required": true, "$description": "Describes the way the timer has changed: started, paused, resumed, finished, reset, edited, team_finished, team_undid_finish." },
-  "teamID": { "$type": "string", "$required": false, "$description": "If event is applicable to a team, lists their ID here." },
-  "timer": { "$type": "object", "$required": true, "$description": "Current copy of the timer object from nodecg-speedcontrol." },
-  "time": {
-    "unix": { "$type": "number", "$required": true, "$description": "Time scene was changed in seconds since UNIX Epoch." },
-    "iso": { "$type": "string", "$required": true, "$description": "Time scene was changed in ISO 8601 format." }
-  }
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"vHost": "esa_prod",
+		"name": "SCTimerChanged",
+		"exchange": "cg",
+		"routingKey": "<event_name>.timer.{started,paused,resumed,finished,reset,edited,team.<team_id>.{team_finished,team_undid_finish}}",
+		"ownerTool": "NodeCG"
+	},
+	"required": [
+		"event",
+		"desc",
+		"timer",
+		"time"
+	],
+	"properties": {
+		"event": {
+			"type": "string",
+			"description": "Short name for the physical event this message was for, usually the same as the donation tracker."
+		},
+		"desc": {
+			"type": "string",
+			"description": "Describes the way the timer has changed: started, paused, resumed, finished, reset, edited, team_finished, team_undid_finish.",
+			"enum": [
+				"started",
+				"paused",
+				"resumed",
+				"finished",
+				"reset",
+				"edited",
+				"team_finished",
+				"team_undid_finish"
+			]
+		},
+		"teamID": {
+			"type": "integer",
+			"description": "If event is applicable to a team, lists their ID here.",
+			"minimum": 0
+		},
+		"timer": {
+			"type": "object",
+			"description": "Current copy of the timer object from nodecg-speedcontrol. See https://github.com/speedcontrol/nodecg-speedcontrol/blob/dev/types/timer.d.ts"
+		},
+		"time": {
+			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"description": "Time the timer state changed"
+		}
+	},
+	"additionalProperties": false
 }

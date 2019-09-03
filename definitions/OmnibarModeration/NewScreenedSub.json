@@ -1,14 +1,46 @@
 {
-  "$meta": {
-    "vHost": "not.sure",
-    "name": "NewScreenedSub",
-    "queue": "new-screened-sub",
-    "ownerTool": "OmnibarModerationTool"
-  },
-  "message": {
-    "trailing":  { "$type": "string", "$required": false, "$description": "The message following the system message." },
-    "tags": {
-      "system-msg": { "$type": "string", "$required": true, "$description": "The system message supplied by Twitch." }
-    }
-  }
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"vHost": "not.sure",
+		"name": "NewScreenedSub",
+		"exchange": "moderation",
+		"routingKey": "screened.sub",
+		"ownerTool": "OmnibarModeration"
+	},
+	"required": [
+		"message"
+	],
+	"properties": {
+		"message": {
+			"type": "object",
+			"required": [
+				"tags"
+			],
+			"properties": {
+				"trailing": {
+					"type": "string",
+					"description": "The message following the system message."
+				},
+				"tags": {
+					"type": "object",
+					"required": [
+						"system-msg"
+					],
+					"properties": {
+						"system-msg": {
+							"type": "string",
+							"description": "The system message supplied by Twitch. Spaces are escaped as `\\s`.",
+							"examples": [
+								"username\\ssubscribed\\swith\\sTwitch\\sPrime.\\sThey've\\ssubscribed\\sfor\\s2\\smonths,\\scurrently\\son\\sa\\s1\\smonth\\sstreak!",
+								"username\\ssubscribed\\sat\\sTier\\s1."
+							]
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"additionalProperties": false
 }

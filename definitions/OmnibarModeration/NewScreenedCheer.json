@@ -1,15 +1,48 @@
 {
-  "$meta": {
-    "vHost": "not.sure",
-    "name": "NewScreenedCheer",
-    "queue": "new-screened-cheer",
-    "ownerTool": "OmnibarModerationTool"
-  },
-  "message": {
-    "trailing":  { "$type": "string", "$required": true, "$description": "The message text." },
-    "tags": {
-      "display-name": { "$type": "string", "$required": true, "$description": "The display name of the user who cheered." },
-      "bits": { "$type": "string", "$required": true, "$description": "The amount of bits cheered by the user." }
-    }
-  }
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"vHost": "not.sure",
+		"name": "NewScreenedCheer",
+		"exchange": "moderation",
+		"routingKey": "screened.cheer",
+		"ownerTool": "OmnibarModeration"
+	},
+	"required": [
+		"message"
+	],
+	"properties": {
+		"message": {
+			"type": "object",
+			"required": [
+				"trailing",
+				"tags"
+			],
+			"properties": {
+				"trailing": {
+					"type": "string",
+					"description": "The message text."
+				},
+				"tags": {
+					"type": "object",
+					"required": [
+						"display-name",
+						"bits"
+					],
+					"properties": {
+						"display-name": {
+							"type": "string",
+							"description": "The display name of the user who cheered."
+						},
+						"bits": {
+							"type": "string",
+							"description": "The amount of bits cheered by the user."
+						}
+					},
+					"additionalProperties": false
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"additionalProperties": false
 }
