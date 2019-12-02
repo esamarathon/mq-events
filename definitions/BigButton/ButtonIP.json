@@ -5,7 +5,7 @@
 		"name": "ButtonIP",
 		"exchange": "bigbutton",
 		"routingKey": "<button_id>.ip_addr",
-		"ownerTool": "SpeedControler"
+		"ownerTool": "BigButton"
 	},
 	"required": [
 		"button_id"

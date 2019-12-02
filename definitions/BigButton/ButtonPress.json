@@ -5,7 +5,7 @@
 		"name": "ButtonPress",
 		"exchange": "bigbutton",
 		"routingKey": "<button_id>.pressed",
-		"ownerTool": "SpeedControler"
+		"ownerTool": "BigButton"
 	},
 	"required": [
 		"button_id",
