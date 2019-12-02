@@ -58,7 +58,7 @@
 				},
 				"routingKey": {
 					"$ref": "#/definitions/nonEmptyString",
-					"description": "RabbitMQ routing key (topic) this event is emitted to"
+					"description": "RabbitMQ routing key (topic) this event is emitted to. The format is described in the esamarathon/mq-events README file."
 				},
 				"ownerTool": {
 					"$ref": "#/definitions/nonEmptyString",
