@@ -11,6 +11,7 @@
 		"event",
 		"action",
 		"scene",
+		"gameScene",
 		"time"
 	],
 	"properties": {
