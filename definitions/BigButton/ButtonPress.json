@@ -13,7 +13,7 @@
 	],
 	"properties": {
 		"button_id": {
-			"type": "string",
+			"type": "integer",
 			"description": "ID of the button"
 		},
 		"button_message_count": {
