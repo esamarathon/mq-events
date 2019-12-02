@@ -33,7 +33,7 @@
 			"properties": {
 				"name": {
 					"type": "string",
-					"description": "Name of the Twitter user who sent the tweet."
+					"description": "Twitter handle of the user who sent the tweet."
 				}
 			},
 			"additionalProperties": false
