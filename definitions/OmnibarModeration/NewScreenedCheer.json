@@ -24,6 +24,7 @@
 				},
 				"tags": {
 					"type": "object",
+					"description": "This object represents a deserialized Twitch IRC message. Only properties that we use are listed here.",
 					"required": [
 						"display-name",
 						"bits"
@@ -37,8 +38,7 @@
 							"type": "string",
 							"description": "The amount of bits cheered by the user."
 						}
-					},
-					"additionalProperties": false
+					}
 				}
 			},
 			"additionalProperties": false

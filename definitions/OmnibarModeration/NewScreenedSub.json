@@ -23,6 +23,7 @@
 				},
 				"tags": {
 					"type": "object",
+					"description": "This object represents a deserialized Twitch IRC message. Only properties that we use are listed here.",
 					"required": [
 						"system-msg"
 					],
@@ -35,8 +36,7 @@
 								"username\\ssubscribed\\sat\\sTier\\s1."
 							]
 						}
-					},
-					"additionalProperties": false
+					}
 				}
 			},
 			"additionalProperties": false
