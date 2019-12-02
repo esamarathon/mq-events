@@ -1,7 +1,6 @@
 {
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
-		"vHost": "esa_prod",
 		"name": "OBSSceneChanged",
 		"exchange": "cg",
 		"routingKey": "<event_name>.obs.scene.<scene_name>.{end,start}{,.gamescene}",

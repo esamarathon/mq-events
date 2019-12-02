@@ -1,7 +1,6 @@
 {
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
-		"vHost": "esa_prod",
 		"name": "SCTimerChanged",
 		"exchange": "cg",
 		"routingKey": "<event_name>.timer.{started,paused,resumed,finished,reset,edited,team.<team_id>.{team_finished,team_undid_finish}}",

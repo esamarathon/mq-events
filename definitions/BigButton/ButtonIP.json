@@ -1,7 +1,6 @@
 {
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
-		"vHost": "not.sure",
 		"name": "ButtonIP",
 		"exchange": "bigbutton",
 		"routingKey": "<button_id>.ip_addr",

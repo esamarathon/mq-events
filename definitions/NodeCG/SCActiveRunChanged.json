@@ -1,7 +1,6 @@
 {
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
-		"vHost": "esa_prod",
 		"name": "SCActiveRunChanged",
 		"exchange": "cg",
 		"routingKey": "<event_name>.run.changed",

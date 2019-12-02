@@ -4,7 +4,7 @@ Repository holding information about the events published to our Message Queue s
 
 Each application defining new events should add a new folder in `definitions/` where they may add a README.md file describing the events and their usage, as well as .json files describing any events emitted.
 
-An application must prescribe all events it owns, including information about its VHost, payload structure and queue name.
+An application must prescribe all events it owns, including information about its payload structure and queue name.
 
 Two applications may not prescribe the same event in the case there is overlap in publishing and subscribing for the purpose of triggers functions.
 
@@ -29,7 +29,6 @@ Following is an example event definition using this schema:
 {
 	"$schema": "https://raw.githubusercontent.com/esamarathon/mq-events/master/schemas/event-schema.json",
 	"$meta": {
-		"vHost": "vhost.domain.tld",
 		"name": "EventName",
 		"exchange": "exchange",
 		"routingKey": "routing.key.for.event",
@@ -61,7 +60,6 @@ Aside from standard JSON Schema properties the schema has a `$meta` property con
 
 ```js
 "$meta": {
-	"vHost": "esa_prod", // VHost this event is emitted to
 	"name": "DonationFullyProcessed", // Name of this message type
 	"exchange": "tracker", // RabbitMQ exchange name this event is emitted to
 	"routingKey": "<event name>.donation.<donation ID>.fully_processed", // RabbitMQ routing key (topic) this event is emitted to in a custom format (see below)

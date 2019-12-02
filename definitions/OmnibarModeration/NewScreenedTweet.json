@@ -1,7 +1,6 @@
 {
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
-		"vHost": "not.sure",
 		"name": "NewScreenedTweet",
 		"exchange": "moderation",
 		"routingKey": "screened.tweet",

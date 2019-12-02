@@ -1,7 +1,6 @@
 {
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
-		"vHost": "not.sure",
 		"name": "NewScreenedCheer",
 		"exchange": "moderation",
 		"routingKey": "screened.cheer",

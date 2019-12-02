@@ -1,7 +1,6 @@
 {
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
-		"vHost": "not.sure",
 		"name": "UserUpdated",
 		"exchange": "users",
 		"routingKey": "user.<user_id>.updated",

@@ -1,7 +1,6 @@
 {
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
-		"vHost": "not.sure",
 		"name": "DonationFullyProcessed",
 		"exchange": "tracker",
 		"routingKey": "<event_name>.donation.<donation_id>.fully_processed",

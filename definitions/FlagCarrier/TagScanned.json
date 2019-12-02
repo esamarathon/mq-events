@@ -1,7 +1,6 @@
 {
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
-		"vHost": "not.sure",
 		"name": "TagScanned",
 		"exchange": "bigbutton",
 		"routingKey": "<button_id>.tag_scanned",

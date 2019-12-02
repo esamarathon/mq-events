@@ -42,17 +42,12 @@
 		"$meta": {
 			"type": "object",
 			"required": [
-				"vHost",
 				"name",
 				"exchange",
 				"routingKey",
 				"ownerTool"
 			],
 			"properties": {
-				"vHost": {
-					"$ref": "#/definitions/nonEmptyString",
-					"description": "VHost this event is emitted to"
-				},
 				"name": {
 					"$ref": "#/definitions/nonEmptyString",
 					"description": "Name of this message type"
