@@ -33,9 +33,8 @@
 			]
 		},
 		"teamID": {
-			"type": "integer",
-			"description": "If event is applicable to a team, lists their ID here.",
-			"minimum": 0
+			"$ref": "schemas/event-schema.json#/definitions/uuid",
+			"description": "If event is applicable to a team, lists their UUID here. This UUID is also used in the routing key."
 		},
 		"timer": {
 			"type": "object",
