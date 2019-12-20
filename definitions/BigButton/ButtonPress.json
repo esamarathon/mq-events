@@ -1,15 +1,43 @@
-    
 {
-  "$meta": {
-    "vHost": "not.sure",
-    "name": "ButtonPress",
-    "queue": "BigButton",
-    "ownerTool": "SpeedControler"
-  },
-  "button_id":{ "$type": "id", "$required": true, "$description": "ID of button" },
-  "button_message_count":{ "$type": "number", "$required": false, "$description": "used to troubleshoot message delivery issues" },
-  "time":[{
-	"unix":{ "$type": "number", "$required": true, "$description": "time button was pressed in second since unix epoc" },
-	"iso": { "$type": "string", "$required": true, "$description": "same as unix but in ISO 8601 format" }
-  }]
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "ButtonPress",
+		"exchange": "bigbutton",
+		"routingKey": "<button_id>.pressed",
+		"ownerTool": "BigButton"
+	},
+	"required": [
+		"button_id",
+		"time"
+	],
+	"properties": {
+		"button_id": {
+			"type": "integer",
+			"description": "ID of the button"
+		},
+		"button_message_count": {
+			"type": "integer",
+			"description": "Used to troubleshoot message delivery issues"
+		},
+		"time": {
+			"type": "object",
+			"description": "Object containing timestamps of when the button was pressed",
+			"required": [
+				"unix",
+				"iso"
+			],
+			"properties": {
+				"unix": {
+					"type": "number",
+					"description": "Time the button was pressed in seconds since Unix epoch"
+				},
+				"iso": {
+					"type": "string",
+					"description": "Time the button was pressed in the ISO 8601 format"
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"additionalProperties": false
 }

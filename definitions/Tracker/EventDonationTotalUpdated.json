@@ -1,0 +1,24 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "EventDonationTotalUpdated",
+		"exchange": "tracker",
+		"routingKey": "<event_name>.donation_total.updated",
+		"ownerTool": "Tracker"
+	},
+	"required": [
+		"event",
+		"new_total"
+	],
+	"properties": {
+		"event": {
+			"type": "string",
+			"description": "Shorthand event string this total is for."
+		},
+		"new_total": {
+			"type": "number",
+			"description": "The new overall donation total. Currency isn't specified but is (currently) USD."
+		}
+	},
+	"additionalProperties": false
+}

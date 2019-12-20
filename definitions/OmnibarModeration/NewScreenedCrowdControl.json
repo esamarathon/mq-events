@@ -1,0 +1,30 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "NewScreenedCrowdControl",
+		"exchange": "moderation",
+		"routingKey": "screened.crowdcontrol",
+		"ownerTool": "OmnibarModeration"
+	},
+	"required": [
+		"message"
+	],
+	"properties": {
+		"message": {
+			"type": "object",
+			"required": [
+				"trailing"
+			],
+			"properties": {
+				"trailing": {
+					"type": "string",
+					"description": "The message that WarpWorldBot originally posted in Twitch chat."
+				},
+				"tags": {
+					"type": "object",
+					"description": "This object represents a deserialized Twitch IRC message. Only properties that we use are listed here."
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,37 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "ButtonRGB",
+		"exchange": "bigbutton",
+		"routingKey": "<button_id>.rgb",
+		"ownerTool": "BigButton"
+	},
+	"required": [
+		"button_id"
+	],
+	"properties": {
+		"button_id": {
+			"type": "integer",
+			"description": "ID of the button"
+		},
+		"button_R": {
+			"type": "integer",
+			"description": "8 bit red color component",
+			"minimum": 0,
+			"maximum": 255
+		},
+		"button_G": {
+			"type": "integer",
+			"description": "8 bit green color component",
+			"minimum": 0,
+			"maximum": 255
+		},
+		"button_B": {
+			"type": "integer",
+			"description": "8 bit blue color component",
+			"minimum": 0,
+			"maximum": 255
+		}
+	},
+	"additionalProperties": false
+}

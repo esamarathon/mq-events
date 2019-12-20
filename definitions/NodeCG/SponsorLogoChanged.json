@@ -1,0 +1,32 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "SponsorLogoChanged",
+		"exchange": "cg",
+		"routingKey": "<event_name>.sponsor.logo.changed",
+		"ownerTool": "NodeCG"
+	},
+	"required": [
+		"event",
+		"time"
+	],
+	"properties": {
+		"event": {
+			"type": "string",
+			"description": "Short name for the physical event this message was for, usually the same as the donation tracker."
+		},
+		"logo": {
+			"type": "string",
+			"description": "Name/URL of the logo file that is now being shown; will not be defined if nothing is shown on stream."
+		},
+		"length": {
+			"type": "number",
+			"description": "Length of time in seconds that the sponsor logo is set to show for; will not be defined if nothing is shown on stream."
+		},
+		"time": {
+			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"description": "Time the sponsor logo changed"
+		}
+	},
+	"additionalProperties": false
+}

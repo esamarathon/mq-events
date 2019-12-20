@@ -1,0 +1,28 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "SCActiveRunChanged",
+		"exchange": "cg",
+		"routingKey": "<event_name>.run.changed",
+		"ownerTool": "NodeCG"
+	},
+	"required": [
+		"event",
+		"time"
+	],
+	"properties": {
+		"event": {
+			"type": "string",
+			"description": "Short name for the physical event this message was for, usually the same as the donation tracker."
+		},
+		"run": {
+			"type": "object",
+			"description": "Object of the run data from nodecg-speedcontrol. If this is not supplied, no run is set. See https://github.com/speedcontrol/nodecg-speedcontrol/blob/dev/types/RunData.d.ts"
+		},
+		"time": {
+			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"description": "Time the active run was changed."
+		}
+	},
+	"additionalProperties": false
+}

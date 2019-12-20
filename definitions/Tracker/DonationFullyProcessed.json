@@ -1,0 +1,67 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "DonationFullyProcessed",
+		"exchange": "tracker",
+		"routingKey": "<event_name>.donation.<donation_id>.fully_processed",
+		"ownerTool": "Tracker"
+	},
+	"required": [
+		"event",
+		"_id",
+		"donor_visiblename",
+		"amount",
+		"comment_state",
+		"comment",
+		"time_received"
+	],
+	"properties": {
+		"event": {
+			"type": "string",
+			"description": "Shorthand event string this donation is for."
+		},
+		"_id": {
+			"type": "integer",
+			"description": "Unique donation ID from the database."
+		},
+		"donor_visiblename": {
+			"type": "string",
+			"description": "The name of the donor that they would like to appear as publicly (can be \"(Anonymous)\").",
+			"examples": [
+				"(Anonymous)",
+				"alias",
+				"D..., John (alias)",
+				"Doe, John (alias)"
+			]
+		},
+		"amount": {
+			"type": "number",
+			"description": "The amount this donation is for. Currency isn't specified but is (currently) USD."
+		},
+		"comment_state": {
+			"type": "string",
+			"description": "If the donation comment was accepted/rejected. Should be APPROVED or DENIED, rarely could be something else if something server side messes up; treat anything that isn't APPROVED as if it was DENIED.",
+			"enum": [
+				"ABSENT",
+				"PENDING",
+				"DENIED",
+				"APPROVED",
+				"FLAGGED"
+			]
+		},
+		"comment": {
+			"type": "string",
+			"description": "Donator's comment. Can be blank; is made blank if their comment was rejected.",
+			"examples": [
+				"",
+				"Hello world!"
+			]
+		},
+		"time_received": {
+			"type": "string",
+			"description": "Timestamp of when the donation was received.",
+			"format": "date-time"
+		}
+	},
+	"additionalProperties": false
+}

@@ -1,0 +1,77 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://schema.esamarathon.com/mq/event-schema",
+	"title": "European Speedrunner Assembly RabbitMQ event schema",
+	"definitions": {
+		"nonEmptyString": {
+			"type": "string",
+			"minLength": 1
+		},
+		"timestampObject": {
+			"type": "object",
+			"required": [
+				"iso",
+				"unix"
+			],
+			"properties": {
+				"iso": {
+					"type": "string",
+					"description": "Timestamp representation in the ISO 8601 format",
+					"format": "date-time",
+					"examples": [
+						"2019-09-03T19:55:18.430Z"
+					]
+				},
+				"unix": {
+					"type": "number",
+					"description": "Timestamp representation in seconds since the Unix epoch, including a fractional millisecond part",
+					"examples": [
+						1567540518.430
+					]
+				}
+			},
+			"additionalProperties": false
+		},
+		"uuid": {
+			"type": "string",
+			"pattern": "^[0-9a-f]{8}-([0-9a-f]{4}-){3}[0-9a-f]{12}$",
+			"format": "uuid"
+		}
+	},
+	"properties": {
+		"$meta": {
+			"type": "object",
+			"required": [
+				"name",
+				"exchange",
+				"routingKey",
+				"ownerTool"
+			],
+			"properties": {
+				"name": {
+					"$ref": "#/definitions/nonEmptyString",
+					"description": "Name of this message type"
+				},
+				"exchange": {
+					"$ref": "#/definitions/nonEmptyString",
+					"description": "RabbitMQ exchange name this event is emitted to"
+				},
+				"routingKey": {
+					"$ref": "#/definitions/nonEmptyString",
+					"description": "RabbitMQ routing key (topic) this event is emitted to. The format is described in the esamarathon/mq-events README file."
+				},
+				"ownerTool": {
+					"$ref": "#/definitions/nonEmptyString",
+					"description": "Name of the tool that controls this event"
+				},
+				"accessControl": {
+					"$ref": "#/definitions/nonEmptyString",
+					"description": "Access control code"
+				}
+			}
+		}
+	},
+	"allOf": [{
+		"$ref": "http://json-schema.org/draft-07/schema#"
+	}]
+}

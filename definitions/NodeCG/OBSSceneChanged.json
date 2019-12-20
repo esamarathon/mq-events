@@ -1,0 +1,43 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "OBSSceneChanged",
+		"exchange": "cg",
+		"routingKey": "<event_name>.obs.scene.<scene_name>.{end,start}{,.gamescene}",
+		"ownerTool": "NodeCG"
+	},
+	"required": [
+		"event",
+		"action",
+		"scene",
+		"gameScene",
+		"time"
+	],
+	"properties": {
+		"event": {
+			"type": "string",
+			"description": "Short name for the physical event this message was for, usually the same as the donation tracker."
+		},
+		"action": {
+			"type": "string",
+			"description": "Type of change for the scene, currently either 'start' or 'end'.",
+			"enum": [
+				"start",
+				"end"
+			]
+		},
+		"scene": {
+			"type": "string",
+			"description": "Scene name from OBS."
+		},
+		"gameScene": {
+			"type": "boolean",
+			"description": "Specifies if the scene is a game scene"
+		},
+		"time": {
+			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"description": "Time the scene was changed."
+		}
+	},
+	"additionalProperties": false
+}

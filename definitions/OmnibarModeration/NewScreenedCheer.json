@@ -1,0 +1,47 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "NewScreenedCheer",
+		"exchange": "moderation",
+		"routingKey": "screened.cheer",
+		"ownerTool": "OmnibarModeration"
+	},
+	"required": [
+		"message"
+	],
+	"properties": {
+		"message": {
+			"type": "object",
+			"required": [
+				"trailing",
+				"tags"
+			],
+			"properties": {
+				"trailing": {
+					"type": "string",
+					"description": "The message text."
+				},
+				"tags": {
+					"type": "object",
+					"description": "This object represents a deserialized Twitch IRC message. Only properties that we use are listed here.",
+					"required": [
+						"display-name",
+						"bits"
+					],
+					"properties": {
+						"display-name": {
+							"type": "string",
+							"description": "The display name of the user who cheered."
+						},
+						"bits": {
+							"type": "string",
+							"description": "The amount of bits cheered by the user."
+						}
+					}
+				}
+			},
+			"additionalProperties": false
+		}
+	},
+	"additionalProperties": false
+}
