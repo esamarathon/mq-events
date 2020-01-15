@@ -14,14 +14,12 @@ Which application is the one to control the event is to be decided between the p
 
 All exchanges are of type `topic`, durable, auto-delete ON.
 
-Per-application receiving queues should have an expiry (`x-expires` property) to not clutter the server forever.
-
-Suggest value is around 4 hours to bridge any kind of connectivity issues or outages.
+Per-application receiving queues should have an expiry (`x-expires` property) to not clutter the server forever. The suggested value is around 4 hours to bridge any kind of connectivity issues or outages.
 
 
 ## Event definition format
 
-A document describing and event shall be a .json file containing a single JSON object that describes the format of the message in the [JSON Schema](https://json-schema.org/) format, using the `schemas/event-schema.json` schema from this repository.
+A document describing an event shall be a .json file containing a single JSON object that describes the format of the message in the [JSON Schema](https://json-schema.org/) format, using the `schemas/event-schema.json` schema from this repository.
 
 Following is an example event definition using this schema:
 
@@ -86,7 +84,7 @@ It may contain any of the following special sequences:
 `<event_name>.started` | `esaw2019s1.started` | `esaw2019s2.ended`, `.started`
 `timer.{started,paused}` | `timer.started`, `timer.paused` | `timer.restarted`
 `donation.update{,.read}` | `donation.update`, `donation.update.read` | `donation.update.approved`
-`esa{w|s}<year>s1` | `esaw2019s1`, `esas2019s1`, `esaw2020s1` | `esaw`, `esa2019s1`, `esaws1`, `esaw2019s2`
+`esa{w\|s}<year>s1` | `esaw2019s1`, `esas2019s1`, `esaw2020s1` | `esaw`, `esa2019s1`, `esaws1`, `esaw2019s2`
 
 
 ### `accessControl` property
