@@ -2,7 +2,7 @@
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
 		"name": "ServerStarted",
-		"exchange": "UNKNOWN",
+		"exchange": "restreamviewertool",
 		"routingKey": "<application_uuid>.server.started",
 		"ownerTool": "RestreamViewerTool"
 	},
