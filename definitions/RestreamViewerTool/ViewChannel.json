@@ -2,9 +2,9 @@
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
 		"name": "ViewChannel",
-		"exchange": "?",
-		"routingKey": "?",
-		"ownerTool": "?"
+		"exchange": "UNKNOWN",
+		"routingKey": "<application_uuid>.view",
+		"ownerTool": "RestreamViewerTool"
 	},
 	"required": [
 		"uuid",

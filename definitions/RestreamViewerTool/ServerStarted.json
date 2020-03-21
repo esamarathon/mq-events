@@ -2,9 +2,9 @@
 	"$schema": "../../schemas/event-schema.json",
 	"$meta": {
 		"name": "ServerStarted",
-		"exchange": "?",
-		"routingKey": "?",
-		"ownerTool": "?"
+		"exchange": "UNKNOWN",
+		"routingKey": "<application_uuid>.server.started",
+		"ownerTool": "RestreamViewerTool"
 	},
 	"required": [
 		"uuid",
