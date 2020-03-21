@@ -1,0 +1,34 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "ServerStarted",
+		"exchange": "?",
+		"routingKey": "?",
+		"ownerTool": "?"
+  },
+	"required": [
+		"uuid",
+    "channel",
+    "port",
+		"time"
+	],
+	"properties": {
+		"uuid": {
+			"type": "string",
+			"description": "Unique identifier for the instance of the running application."
+		},
+		"channel": {
+      "type": "string",
+      "description": "The name of the Twitch channel currently being served."
+		},
+		"port": {
+			"type": "number",
+			"description": "The port the server was started on."
+		},
+		"time": {
+			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"description": "Time the server was started."
+		}
+	},
+  "additionalProperties": false
+}
