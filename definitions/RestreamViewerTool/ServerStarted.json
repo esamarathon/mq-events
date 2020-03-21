@@ -5,11 +5,11 @@
 		"exchange": "?",
 		"routingKey": "?",
 		"ownerTool": "?"
-  },
+	},
 	"required": [
 		"uuid",
-    "channel",
-    "port",
+		"channel",
+		"port",
 		"time"
 	],
 	"properties": {
@@ -18,8 +18,8 @@
 			"description": "Unique identifier for the instance of the running application."
 		},
 		"channel": {
-      "type": "string",
-      "description": "The name of the Twitch channel currently being served."
+			"type": "string",
+			"description": "The name of the Twitch channel currently being served."
 		},
 		"port": {
 			"type": "number",
@@ -30,5 +30,5 @@
 			"description": "Time the server was started."
 		}
 	},
-  "additionalProperties": false
+	"additionalProperties": false
 }
