@@ -3,19 +3,29 @@
 	"$meta": {
 		"name": "ServerStarted",
 		"exchange": "restreamviewertool",
-		"routingKey": "<application_uuid>.server.started",
+		"routingKey": "<event_name>.<player_id>.server.started",
 		"ownerTool": "RestreamViewerTool"
 	},
 	"required": [
+		"event",
 		"uuid",
+		"playerID",
 		"channel",
 		"port",
 		"time"
 	],
 	"properties": {
+		"event": {
+			"type": "string",
+			"description": "Short name for the physical event this message was for, usually the same as the donation tracker."
+		},
 		"uuid": {
 			"type": "string",
 			"description": "Unique identifier for the instance of the running application."
+		},
+		"playerID": {
+			"type": "number",
+			"description": "A 1-index based number for which slot the player tool is for."
 		},
 		"channel": {
 			"type": "string",
