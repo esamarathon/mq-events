@@ -1,7 +1,7 @@
-export * as BigButton from './BigButton';
-export * as FlagCarrier from './FlagCarrier';
-export * as NodeCG from './NodeCG';
-export * as OmnibarModeration from './OmnibarModeration';
-export * as RestreamViewerTool from './RestreamViewerTool';
-export * as Tracker from './Tracker';
-export * as UserTool from './UserTool';
+export * from './BigButton';
+export * from './FlagCarrier';
+export * from './NodeCG';
+export * from './OmnibarModeration';
+export * from './RestreamViewerTool';
+export * from './Tracker';
+export * from './UserTool';

@@ -7,7 +7,7 @@ async function generate(): Promise<void> {
     const index = [];
     for (const dir of dirs) {
       mkdirSync(`./types/${dir.name}`, { recursive: true });
-      const subIndex = [];
+      const dirTypes = [];
       const files = readdirSync(`./definitions/${dir.name}`);
       for (const file of files) {
         const name = file.replace(/.json$/, '');
@@ -19,10 +19,18 @@ async function generate(): Promise<void> {
           },
         )
         writeFileSync(`./types/${dir.name}/${name}.d.ts`, ts);
-        subIndex.push(`export * from './${name}';`);
+        dirTypes.push(name);
       }
-      writeFileSync(`./types/${dir.name}/index.d.ts`, `${subIndex.join('\n')}\n`);
-      index.push(`export * as ${dir.name} from './${dir.name}';`);
+
+      // Creating the index.d.ts file for each group.
+      const subIndex = [];
+      subIndex.push(...dirTypes.map((t) => `import { ${t} as ${t}_ } from './${t}'\n`));
+      subIndex.push(`\nexport namespace ${dir.name} {\n`);
+      subIndex.push(...dirTypes.map((t) => `  interface ${t} extends ${t}_ {}\n`));
+      subIndex.push(`}\n`)
+      writeFileSync(`./types/${dir.name}/index.d.ts`, `${subIndex.join('')}`);
+      
+      index.push(`export * from './${dir.name}';`);
     }
     writeFileSync(`./types/index.d.ts`, `${index.join('\n')}\n`);
   } catch (err) {

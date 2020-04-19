@@ -40,7 +40,7 @@ var fs_1 = require("fs");
 var json_schema_to_typescript_1 = require("json-schema-to-typescript");
 function generate() {
     return __awaiter(this, void 0, void 0, function () {
-        var dirs, index, _i, dirs_1, dir, subIndex, files, _a, files_1, file, name_1, ts, err_1;
+        var dirs, index, _i, dirs_1, dir, dirTypes, files, _a, files_1, file, name_1, ts, subIndex, err_1;
         return __generator(this, function (_b) {
             switch (_b.label) {
                 case 0:
@@ -53,7 +53,7 @@ function generate() {
                     if (!(_i < dirs_1.length)) return [3 /*break*/, 7];
                     dir = dirs_1[_i];
                     fs_1.mkdirSync("./types/" + dir.name, { recursive: true });
-                    subIndex = [];
+                    dirTypes = [];
                     files = fs_1.readdirSync("./definitions/" + dir.name);
                     _a = 0, files_1 = files;
                     _b.label = 2;
@@ -68,14 +68,19 @@ function generate() {
                 case 3:
                     ts = _b.sent();
                     fs_1.writeFileSync("./types/" + dir.name + "/" + name_1 + ".d.ts", ts);
-                    subIndex.push("export * from './" + name_1 + "';");
+                    dirTypes.push(name_1);
                     _b.label = 4;
                 case 4:
                     _a++;
                     return [3 /*break*/, 2];
                 case 5:
-                    fs_1.writeFileSync("./types/" + dir.name + "/index.d.ts", subIndex.join('\n') + "\n");
-                    index.push("export * as " + dir.name + " from './" + dir.name + "';");
+                    subIndex = [];
+                    subIndex.push.apply(subIndex, dirTypes.map(function (t) { return "import { " + t + " as " + t + "_ } from './" + t + "'\n"; }));
+                    subIndex.push("\nexport namespace " + dir.name + " {\n");
+                    subIndex.push.apply(subIndex, dirTypes.map(function (t) { return "  interface " + t + " extends " + t + "_ {}\n"; }));
+                    subIndex.push("}\n");
+                    fs_1.writeFileSync("./types/" + dir.name + "/index.d.ts", "" + subIndex.join(''));
+                    index.push("export * from './" + dir.name + "';");
                     _b.label = 6;
                 case 6:
                     _i++;
