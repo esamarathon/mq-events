@@ -15,7 +15,6 @@
   "homepage": "https://github.com/esamarathon/mq-events#readme",
   "devDependencies": {
     "json-schema-to-typescript": "^8.2.0",
-    "readdirp": "^3.4.0",
     "typescript": "^3.8.3"
   }
 }

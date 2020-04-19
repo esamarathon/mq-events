@@ -36,48 +36,58 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 exports.__esModule = true;
-var fs = require("fs");
+var fs_1 = require("fs");
 var json_schema_to_typescript_1 = require("json-schema-to-typescript");
-var path = require("path");
-var readdirp = require("readdirp");
 function generate() {
     return __awaiter(this, void 0, void 0, function () {
-        var index, files, _i, files_1, file, name_1, ts, err_1;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
+        var dirs, index, _i, dirs_1, dir, subIndex, files, _a, files_1, file, name_1, ts, err_1;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
                 case 0:
-                    _a.trys.push([0, 6, , 7]);
+                    _b.trys.push([0, 8, , 9]);
+                    dirs = fs_1.readdirSync('./definitions', { withFileTypes: true }).filter(function (d) { return d.isDirectory(); });
                     index = [];
-                    return [4 /*yield*/, readdirp.promise('./definitions')];
+                    _i = 0, dirs_1 = dirs;
+                    _b.label = 1;
                 case 1:
-                    files = _a.sent();
-                    _i = 0, files_1 = files;
-                    _a.label = 2;
+                    if (!(_i < dirs_1.length)) return [3 /*break*/, 7];
+                    dir = dirs_1[_i];
+                    fs_1.mkdirSync("./types/" + dir.name, { recursive: true });
+                    subIndex = [];
+                    files = fs_1.readdirSync("./definitions/" + dir.name);
+                    _a = 0, files_1 = files;
+                    _b.label = 2;
                 case 2:
-                    if (!(_i < files_1.length)) return [3 /*break*/, 5];
-                    file = files_1[_i];
-                    name_1 = file.path.replace(/.json$/, '').replace('\\', '/');
-                    console.log(name_1);
-                    return [4 /*yield*/, json_schema_to_typescript_1.compileFromFile("./definitions/" + name_1 + ".json", {
+                    if (!(_a < files_1.length)) return [3 /*break*/, 5];
+                    file = files_1[_a];
+                    name_1 = file.replace(/.json$/, '');
+                    console.log(dir.name + "/" + name_1);
+                    return [4 /*yield*/, json_schema_to_typescript_1.compileFromFile("./definitions/" + dir.name + "/" + name_1 + ".json", {
                             cwd: '.'
                         })];
                 case 3:
-                    ts = _a.sent();
-                    fs.mkdirSync("./types/" + path.dirname(file.path), { recursive: true });
-                    fs.writeFileSync("./types/" + name_1 + ".d.ts", ts);
-                    index.push("export * from './" + name_1 + "';");
-                    _a.label = 4;
+                    ts = _b.sent();
+                    fs_1.writeFileSync("./types/" + dir.name + "/" + name_1 + ".d.ts", ts);
+                    subIndex.push("export * from './" + name_1 + "';");
+                    _b.label = 4;
                 case 4:
-                    _i++;
+                    _a++;
                     return [3 /*break*/, 2];
                 case 5:
-                    fs.writeFileSync('./types/index.d.ts', index.join('\n') + "\n");
-                    return [3 /*break*/, 7];
+                    fs_1.writeFileSync("./types/" + dir.name + "/index.d.ts", subIndex.join('\n') + "\n");
+                    index.push("export * as " + dir.name + " from './" + dir.name + "';");
+                    _b.label = 6;
                 case 6:
-                    err_1 = _a.sent();
+                    _i++;
+                    return [3 /*break*/, 1];
+                case 7:
+                    fs_1.writeFileSync("./types/index.d.ts", index.join('\n') + "\n");
+                    return [3 /*break*/, 9];
+                case 8:
+                    err_1 = _b.sent();
                     console.log(err_1);
-                    return [3 /*break*/, 7];
-                case 7: return [2 /*return*/];
+                    return [3 /*break*/, 9];
+                case 9: return [2 /*return*/];
             }
         });
     });

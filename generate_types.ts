@@ -1,26 +1,30 @@
-import * as fs from 'fs';
+import { mkdirSync, readdirSync, writeFileSync } from 'fs';
 import { compileFromFile } from 'json-schema-to-typescript';
-import * as path from 'path';
-import * as readdirp from 'readdirp';
 
 async function generate(): Promise<void> {
   try {
+    const dirs = readdirSync('./definitions', { withFileTypes: true }).filter((d) => d.isDirectory());
     const index = [];
-    const files = await readdirp.promise('./definitions');
-    for (const file of files) {
-      const name = file.path.replace(/.json$/, '').replace('\\', '/');
-      console.log(name);
-      const ts = await compileFromFile(
-        `./definitions/${name}.json`,
-        {
-          cwd: '.',
-        },
-      )
-      fs.mkdirSync(`./types/${path.dirname(file.path)}`, { recursive: true });
-      fs.writeFileSync(`./types/${name}.d.ts`, ts);
-      index.push(`export * from './${name}';`);
+    for (const dir of dirs) {
+      mkdirSync(`./types/${dir.name}`, { recursive: true });
+      const subIndex = [];
+      const files = readdirSync(`./definitions/${dir.name}`);
+      for (const file of files) {
+        const name = file.replace(/.json$/, '');
+        console.log(`${dir.name}/${name}`);
+        const ts = await compileFromFile(
+          `./definitions/${dir.name}/${name}.json`,
+          {
+            cwd: '.',
+          },
+        )
+        writeFileSync(`./types/${dir.name}/${name}.d.ts`, ts);
+        subIndex.push(`export * from './${name}';`);
+      }
+      writeFileSync(`./types/${dir.name}/index.d.ts`, `${subIndex.join('\n')}\n`);
+      index.push(`export * as ${dir.name} from './${dir.name}';`);
     }
-    fs.writeFileSync('./types/index.d.ts', `${index.join('\n')}\n`);
+    writeFileSync(`./types/index.d.ts`, `${index.join('\n')}\n`);
   } catch (err) {
     console.log(err);
   }
