@@ -19,23 +19,6 @@
 			"type": "object",
 			"description": "Object of the run data from nodecg-speedcontrol. If this is not supplied, no run is set. See https://github.com/speedcontrol/nodecg-speedcontrol/blob/dev/types/RunData.d.ts"
 		},
-		"stream": {
-			"type": "array",
-			"description": "Array of channel(s) that should be opened by the restream viewer tool.",
-			"items": {
-				"type": "object",
-				"properties": {
-					"channel": {
-						"type": "string",
-						"description": "The name of the Twitch channel to be opened."
-					}
-				},
-				"required": [
-					"channel"
-				],
-				"additionalProperties": false
-			}
-		},
 		"time": {
 			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
 			"description": "Time the active run was changed."
