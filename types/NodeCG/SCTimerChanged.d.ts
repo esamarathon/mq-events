@@ -19,10 +19,21 @@ export interface SCTimerChanged {
    */
   teamID?: string;
   /**
-   * Current copy of the timer object from nodecg-speedcontrol. See https://github.com/speedcontrol/nodecg-speedcontrol/blob/dev/types/timer.d.ts
+   * Current copy of the timer object from nodecg-speedcontrol.
    */
   timer: {
-    [k: string]: any;
+    time: string;
+    state: "stopped" | "running" | "paused" | "finished";
+    milliseconds: number;
+    timestamp: number;
+    teamFinishTimes: {
+      [k: string]: {
+        time: string;
+        state: "forfeit" | "completed";
+        milliseconds: number;
+        timestamp: number;
+      };
+    };
   };
   /**
    * Time the timer state changed
