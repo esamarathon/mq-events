@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schemas/event-schema.json",
+  "$meta": {
+    "name": "OBSStreamingStatusChanged",
+    "exchange": "cg",
+    "routingKey": "<event_name>.obs.stream.{stop,start}",
+    "ownerTool": "NodeCG"
+  },
+  "required": [
+    "event",
+    "streaming",
+    "time"
+  ],
+  "properties": {
+    "event": {
+      "type": "string",
+      "description": "Short name for the physical event this message was for, usually the same as the donation tracker."
+    },
+    "streaming": {
+      "type": "boolean",
+      "description": "Specifies if streaming has stopped or started."
+    },
+    "time": {
+      "$ref": "schemas/event-schema.json#/definitions/timestampObject",
+      "description": "Time the streaming status was changed."
+    }
+  },
+  "additionalProperties": false
+}
