@@ -1,5 +1,5 @@
 {
-  "name": "mq-events",
+  "name": "@esamarathon/mq-events",
   "version": "1.0.0",
   "description": "Repository holding information about the events published to our Message Queue server.",
   "scripts": {
