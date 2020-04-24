@@ -16,8 +16,8 @@
 			"description": "Short name for the physical event this message was for, usually the same as the donation tracker."
 		},
 		"run": {
-			"type": "object",
-			"description": "Object of the run data from nodecg-speedcontrol. If this is not supplied, no run is set. See https://github.com/speedcontrol/nodecg-speedcontrol/blob/dev/types/RunData.d.ts"
+			"$ref": "https://raw.githubusercontent.com/speedcontrol/nodecg-speedcontrol/master/schemas/reused/RunData.json",
+			"description": "Object of the run data from nodecg-speedcontrol. If this is not supplied, no run is set."
 		},
 		"time": {
 			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
