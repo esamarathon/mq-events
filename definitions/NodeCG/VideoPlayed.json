@@ -1,0 +1,29 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "VideoPlayed",
+		"exchange": "cg",
+		"routingKey": "<event_name>.video.played",
+		"ownerTool": "NodeCG"
+	},
+	"required": [
+		"event",
+		"time",
+		"name"
+	],
+	"properties": {
+		"event": {
+			"type": "string",
+			"description": "Short name for the physical event this message was for, usually the same as the donation tracker."
+		},
+		"time": {
+			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"description": "Time the video started playing."
+		},
+		"name": {
+			"type": "string",
+			"description": "Name of the video that started playing."
+		}
+	},
+	"additionalProperties": false
+}

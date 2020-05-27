@@ -3,6 +3,7 @@ import { OBSStreamingStatusChanged as OBSStreamingStatusChanged_ } from './OBSSt
 import { SCActiveRunChanged as SCActiveRunChanged_ } from './SCActiveRunChanged'
 import { SCTimerChanged as SCTimerChanged_ } from './SCTimerChanged'
 import { SponsorLogoChanged as SponsorLogoChanged_ } from './SponsorLogoChanged'
+import { VideoPlayed as VideoPlayed_ } from './VideoPlayed'
 
 export namespace NodeCG {
   interface OBSSceneChanged extends OBSSceneChanged_ {}
@@ -10,4 +11,5 @@ export namespace NodeCG {
   interface SCActiveRunChanged extends SCActiveRunChanged_ {}
   interface SCTimerChanged extends SCTimerChanged_ {}
   interface SponsorLogoChanged extends SponsorLogoChanged_ {}
+  interface VideoPlayed extends VideoPlayed_ {}
 }
