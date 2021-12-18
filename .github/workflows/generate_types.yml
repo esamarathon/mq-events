@@ -1,0 +1,12 @@
+name: Generate Types
+
+on:
+  workflow_dispatch:
+
+jobs:
+  dummy:
+    name: Dummy job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dummy step
+        run: echo
