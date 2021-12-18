@@ -19,7 +19,7 @@ export interface NewScreenedSub {
        * The system message supplied by Twitch. Spaces are escaped as `\s`.
        */
       "system-msg": string;
-      [k: string]: any;
+      [k: string]: unknown;
     };
   };
 }

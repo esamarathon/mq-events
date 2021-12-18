@@ -23,7 +23,7 @@ export interface NewScreenedCheer {
        * The amount of bits cheered by the user.
        */
       bits: string;
-      [k: string]: any;
+      [k: string]: unknown;
     };
   };
 }

@@ -15,9 +15,9 @@ export interface NewScreenedCrowdControl {
      * This object represents a deserialized Twitch IRC message. Only properties that we use are listed here.
      */
     tags?: {
-      [k: string]: any;
+      [k: string]: unknown;
     };
-    [k: string]: any;
+    [k: string]: unknown;
   };
-  [k: string]: any;
+  [k: string]: unknown;
 }

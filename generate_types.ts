@@ -29,7 +29,7 @@ async function generate(): Promise<void> {
       subIndex.push(...dirTypes.map((t) => `  interface ${t} extends ${t}_ {}\n`));
       subIndex.push(`}\n`)
       writeFileSync(`./types/${dir.name}/index.d.ts`, `${subIndex.join('')}`);
-      
+
       index.push(`export * from './${dir.name}';`);
     }
     writeFileSync(`./types/index.d.ts`, `${index.join('\n')}\n`);

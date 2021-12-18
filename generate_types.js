@@ -45,29 +45,29 @@ function generate() {
             switch (_b.label) {
                 case 0:
                     _b.trys.push([0, 8, , 9]);
-                    dirs = fs_1.readdirSync('./definitions', { withFileTypes: true }).filter(function (d) { return d.isDirectory(); });
+                    dirs = (0, fs_1.readdirSync)('./definitions', { withFileTypes: true }).filter(function (d) { return d.isDirectory(); });
                     index = [];
                     _i = 0, dirs_1 = dirs;
                     _b.label = 1;
                 case 1:
                     if (!(_i < dirs_1.length)) return [3 /*break*/, 7];
                     dir = dirs_1[_i];
-                    fs_1.mkdirSync("./types/" + dir.name, { recursive: true });
+                    (0, fs_1.mkdirSync)("./types/".concat(dir.name), { recursive: true });
                     dirTypes = [];
-                    files = fs_1.readdirSync("./definitions/" + dir.name);
+                    files = (0, fs_1.readdirSync)("./definitions/".concat(dir.name));
                     _a = 0, files_1 = files;
                     _b.label = 2;
                 case 2:
                     if (!(_a < files_1.length)) return [3 /*break*/, 5];
                     file = files_1[_a];
                     name_1 = file.replace(/.json$/, '');
-                    console.log(dir.name + "/" + name_1);
-                    return [4 /*yield*/, json_schema_to_typescript_1.compileFromFile("./definitions/" + dir.name + "/" + name_1 + ".json", {
+                    console.log("".concat(dir.name, "/").concat(name_1));
+                    return [4 /*yield*/, (0, json_schema_to_typescript_1.compileFromFile)("./definitions/".concat(dir.name, "/").concat(name_1, ".json"), {
                             cwd: '.'
                         })];
                 case 3:
                     ts = _b.sent();
-                    fs_1.writeFileSync("./types/" + dir.name + "/" + name_1 + ".d.ts", ts);
+                    (0, fs_1.writeFileSync)("./types/".concat(dir.name, "/").concat(name_1, ".d.ts"), ts);
                     dirTypes.push(name_1);
                     _b.label = 4;
                 case 4:
@@ -75,18 +75,18 @@ function generate() {
                     return [3 /*break*/, 2];
                 case 5:
                     subIndex = [];
-                    subIndex.push.apply(subIndex, dirTypes.map(function (t) { return "import { " + t + " as " + t + "_ } from './" + t + "'\n"; }));
-                    subIndex.push("\nexport namespace " + dir.name + " {\n");
-                    subIndex.push.apply(subIndex, dirTypes.map(function (t) { return "  interface " + t + " extends " + t + "_ {}\n"; }));
+                    subIndex.push.apply(subIndex, dirTypes.map(function (t) { return "import { ".concat(t, " as ").concat(t, "_ } from './").concat(t, "'\n"); }));
+                    subIndex.push("\nexport namespace ".concat(dir.name, " {\n"));
+                    subIndex.push.apply(subIndex, dirTypes.map(function (t) { return "  interface ".concat(t, " extends ").concat(t, "_ {}\n"); }));
                     subIndex.push("}\n");
-                    fs_1.writeFileSync("./types/" + dir.name + "/index.d.ts", "" + subIndex.join(''));
-                    index.push("export * from './" + dir.name + "';");
+                    (0, fs_1.writeFileSync)("./types/".concat(dir.name, "/index.d.ts"), "".concat(subIndex.join('')));
+                    index.push("export * from './".concat(dir.name, "';"));
                     _b.label = 6;
                 case 6:
                     _i++;
                     return [3 /*break*/, 1];
                 case 7:
-                    fs_1.writeFileSync("./types/index.d.ts", index.join('\n') + "\n");
+                    (0, fs_1.writeFileSync)("./types/index.d.ts", "".concat(index.join('\n'), "\n"));
                     return [3 /*break*/, 9];
                 case 8:
                     err_1 = _b.sent();

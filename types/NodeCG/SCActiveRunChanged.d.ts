@@ -26,16 +26,22 @@ export interface SCActiveRunChanged {
     setupTimeS?: number;
     scheduled?: string;
     scheduledS?: number;
+    relay?: boolean;
     teams: {
       name?: string;
       id: string;
+      relayPlayerID?: string;
       players: {
         name: string;
         id: string;
         teamID: string;
         country?: string;
+        pronouns?: string;
         social: {
           twitch?: string;
+        };
+        customData: {
+          [k: string]: string;
         };
       }[];
     }[];
