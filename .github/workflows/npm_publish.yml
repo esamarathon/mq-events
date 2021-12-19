@@ -1,11 +1,11 @@
-name: Generate Types
+name: NPM Publish
 
 on:
   release:
     types: [ published ]
 
 jobs:
-  generate:
+  publish:
     runs-on: ubuntu-latest
 
     steps:
