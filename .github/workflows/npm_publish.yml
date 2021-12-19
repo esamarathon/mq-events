@@ -52,4 +52,4 @@ jobs:
     - name: NPM publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets['NPM_TOKEN'] }}
-      run: npm publish --tag ${{ fromJSON('["latest", "next"]')[github.event.release.prerelease] }}
+      run: npm publish --access public --tag ${{ fromJSON('["latest", "next"]')[github.event.release.prerelease] }}
