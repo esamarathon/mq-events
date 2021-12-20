@@ -33,13 +33,6 @@ jobs:
     - name: Checkout this repository
       uses: actions/checkout@v2
 
-    # Bump version
-    - name: Bump version
-      run: |
-        npm version --no-git-tag-version ${{ github.event.release.tag_name }}
-        git commit -m ${{ github.event.release.tag_name }} -a
-        git push
-
     # Install NPM dependencies
     - name: Install NPM dependencies
       run: npm ci
@@ -48,8 +41,18 @@ jobs:
     - name: Generate types
       run: npm run types
 
+    # Bump version
+    - name: Bump version
+      run: |
+        npm version --no-git-tag-version ${{ github.event.release.tag_name }}
+        git commit -m "Release: ${{ github.event.release.tag_name }}" -a
+
     # NPM publish version
     - name: NPM publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets['NPM_TOKEN'] }}
       run: npm publish --access public --tag ${{ fromJSON('["latest", "next"]')[github.event.release.prerelease] }}
+
+    # Push version bump to GitHub
+    - name: Push version bump
+      run: git push
