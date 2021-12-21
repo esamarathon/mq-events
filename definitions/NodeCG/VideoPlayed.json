@@ -17,7 +17,7 @@
 			"description": "Short name for the physical event this message was for, usually the same as the donation tracker."
 		},
 		"time": {
-			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"$ref": "../../schemas/event-schema.json#/definitions/timestampObject",
 			"description": "Time the video started playing."
 		},
 		"name": {

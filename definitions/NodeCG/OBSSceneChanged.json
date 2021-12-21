@@ -35,7 +35,7 @@
 			"description": "Specifies if the scene is a game scene"
 		},
 		"time": {
-			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"$ref": "../../schemas/event-schema.json#/definitions/timestampObject",
 			"description": "Time the scene was changed."
 		}
 	},
