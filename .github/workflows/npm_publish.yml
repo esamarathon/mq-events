@@ -1,11 +1,14 @@
-name: NPM Publish
+name: Validate/Generate/NPM Publish
 
 on:
+  push:
+    branches: [ master ]
+
   release:
     types: [ published ]
 
 jobs:
-  publish:
+  main:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,22 +40,29 @@ jobs:
     - name: Install NPM dependencies
       run: npm ci
 
+    # Run the definition validation script
+    - name: Validate definitions
+      run: npm run validate
+
     # Run the type generating script
     - name: Generate types
       run: npm run types
 
-    # Bump version
+    # Bump version (if releasing)
     - name: Bump version
+      if: ${{ github.event_name == 'release' }}
       run: |
         npm version --no-git-tag-version ${{ github.event.release.tag_name }}
         git commit -m "Release: ${{ github.event.release.tag_name }}" -a
 
-    # NPM publish version
+    # NPM publish version (if releasing)
     - name: NPM publish
+      if: ${{ github.event_name == 'release' }}
       env:
         NODE_AUTH_TOKEN: ${{ secrets['NPM_TOKEN'] }}
       run: npm publish --access public --tag ${{ fromJSON('["latest", "next"]')[github.event.release.prerelease] }}
 
-    # Push version bump to GitHub
+    # Push version bump to GitHub (if releasing)
     - name: Push version bump
+      if: ${{ github.event_name == 'release' }}
       run: git push
