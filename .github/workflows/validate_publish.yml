@@ -35,6 +35,10 @@ jobs:
     # Checkout
     - name: Checkout this repository
       uses: actions/checkout@v2
+      with:
+        ref: master
+        fetch-depth: 0
+      run: git checkout master
 
     # Set the local git user config to use the GitHub Actions bot account
     - name: Set local git config user details
