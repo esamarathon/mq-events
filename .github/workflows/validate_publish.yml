@@ -1,0 +1,68 @@
+name: Validate/Generate/NPM Publish
+
+on:
+  push:
+    branches: [ master ]
+
+  release:
+    types: [ published ]
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Setup some Node stuff
+    - name: Node.js setup
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        registry-url: https://registry.npmjs.org/
+
+    # Set NPM cache options
+    - name: Set NPM cache
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+
+    # Update NPM to the latest version
+    - name: Update NPM installation
+      run: npm install -g npm@latest
+
+    # Checkout
+    - name: Checkout this repository
+      uses: actions/checkout@v2
+
+    # Install NPM dependencies
+    - name: Install NPM dependencies
+      run: npm ci
+
+    # Run the definition validation script
+    - name: Validate definitions
+      run: npm run validate
+
+    # Run the type generating script
+    - name: Generate types
+      run: npm run types
+
+    # Bump version (if releasing)
+    - name: Bump version
+      if: ${{ github.event_name == 'release' }}
+      run: |
+        npm version --no-git-tag-version ${{ github.event.release.tag_name }}
+        git commit -m "Release: ${{ github.event.release.tag_name }}" -a
+
+    # NPM publish version (if releasing)
+    - name: NPM publish
+      if: ${{ github.event_name == 'release' }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets['NPM_TOKEN'] }}
+      run: npm publish --access public --tag ${{ fromJSON('["latest", "next"]')[github.event.release.prerelease] }}
+
+    # Push version bump to GitHub (if releasing)
+    - name: Push version bump
+      if: ${{ github.event_name == 'release' }}
+      run: git push

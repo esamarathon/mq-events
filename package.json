@@ -2,19 +2,25 @@
   "name": "@esamarathon/mq-events",
   "version": "1.0.0",
   "description": "Repository holding information about the events published to our Message Queue server.",
-  "scripts": {
-    "types": "node generate_types.js"
+  "homepage": "https://github.com/esamarathon/mq-events#readme",
+  "bugs": {
+    "url": "https://github.com/esamarathon/mq-events/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/esamarathon/mq-events.git"
   },
-  "bugs": {
-    "url": "https://github.com/esamarathon/mq-events/issues"
+  "scripts": {
+    "types": "ts-node generate_types.ts",
+    "validate": "ts-node validate_definitions.ts"
   },
-  "homepage": "https://github.com/esamarathon/mq-events#readme",
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "ajv": "^8.8.2",
+    "fs-extra": "^10.0.0",
     "json-schema-to-typescript": "^10.1.5",
+    "jsonschema": "^1.4.0",
+    "ts-node": "^10.4.0",
     "typescript": "^4.5.4"
   }
 }

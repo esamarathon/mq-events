@@ -36,7 +36,7 @@
 			"description": "The port the server was started on. Currently it is assumed to be ran on the same computer, so assume it will be on localhost."
 		},
 		"time": {
-			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"$ref": "../../schemas/event-schema.json#/definitions/timestampObject",
 			"description": "Time the server was started."
 		}
 	},

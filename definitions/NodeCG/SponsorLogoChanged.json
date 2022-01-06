@@ -24,7 +24,7 @@
 			"description": "Length of time in seconds that the sponsor logo is set to show for; will not be defined if nothing is shown on stream."
 		},
 		"time": {
-			"$ref": "schemas/event-schema.json#/definitions/timestampObject",
+			"$ref": "../../schemas/event-schema.json#/definitions/timestampObject",
 			"description": "Time the sponsor logo changed"
 		}
 	},

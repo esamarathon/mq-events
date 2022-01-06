@@ -2,6 +2,7 @@
 	"$schema": "http://json-schema.org/draft-07/schema#",
 	"$id": "http://schema.esamarathon.com/mq/event-schema",
 	"title": "European Speedrunner Assembly RabbitMQ event schema",
+	"type": "object",
 	"definitions": {
 		"nonEmptyString": {
 			"type": "string",

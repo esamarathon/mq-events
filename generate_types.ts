@@ -15,7 +15,7 @@ async function generate(): Promise<void> {
         const ts = await compileFromFile(
           `./definitions/${dir.name}/${name}.json`,
           {
-            cwd: '.',
+            cwd: `./definitions/${dir.name}`,
           },
         )
         writeFileSync(`./types/${dir.name}/${name}.d.ts`, ts);
