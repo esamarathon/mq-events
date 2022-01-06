@@ -36,6 +36,12 @@ jobs:
     - name: Checkout this repository
       uses: actions/checkout@v2
 
+    # Set the local git user config to use the GitHub Actions bot account
+    - name: Set local git config user details
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+
     # Install NPM dependencies
     - name: Install NPM dependencies
       run: npm ci
