@@ -1,0 +1,49 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "WindowInfo",
+		"exchange": "cg",
+		"routingKey": "<event_name>.<pc_id>.window_info_changed",
+		"ownerTool": "ESAWindowTracker"
+	},
+	"required": [
+		"event_short",
+		"pc_id",
+		"window_title",
+		"window_left",
+		"window_right",
+		"window_top",
+		"window_bottom"
+	],
+	"properties": {
+		"event_short": {
+			"type": "string",
+			"description": "Short name for the physical event this message was for, usually the same as the donation tracker."
+		},
+		"pc_id": {
+			"type": "string",
+			"description": "ID string of the PC this event originates from"
+		},
+		"window_title": {
+			"type": "string",
+			"description": "Title of the top level window at the time of this event"
+		},
+		"window_left": {
+			"type": "integer",
+			"description": "X-coordinate of the upper-left corner of the window"
+		},
+		"window_right": {
+			"type": "integer",
+			"description": "X-coordinate of the lower-right corner of the window"
+		},
+		"window_top": {
+			"type": "integer",
+			"description": "Y-coordinate of the upper-left corner of the window"
+		},
+		"window_bottom": {
+			"type": "integer",
+			"description": "Y-coordinate of the lower-right corner of the window"
+		}
+	},
+	"additionalProperties": false
+}
