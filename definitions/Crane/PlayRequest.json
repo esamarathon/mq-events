@@ -1,0 +1,38 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "PlayRequest",
+		"exchange": "crane",
+		"routingKey": "playrequest",
+		"ownerTool": "TwitchPlaysCraneGame"
+	},
+	"required": [
+		"XTime",
+		"YTime"
+	],
+	"properties": {
+		"XTime": {
+			"type": "number",
+			"description": "Amount of time to move crane in X direction",
+			"minimum": 0,
+			"maximum": 5
+		},
+		"YTime": {
+			"type": "number",
+			"description": "Amount of time to move crane in Y direction",
+			"minimum": 0,
+			"maximum": 5
+		},
+		"PlayerName": {
+			"type": "string",
+			"description": "Name of the player requesting to play.",
+			"examples": [
+				"(Anonymous)",
+				"alias",
+				"Zephyyrr",
+				"Edenal"
+			]
+		}
+	},
+	"additionalProperties": false
+}
