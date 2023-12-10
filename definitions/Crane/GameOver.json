@@ -1,0 +1,12 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "GameOver",
+		"exchange": "crane",
+		"routingKey": "gameover",
+		"ownerTool": "TwitchPlaysCraneGame"
+	},
+	"required": [],
+	"properties": {},
+	"additionalProperties": false
+}
