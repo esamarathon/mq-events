@@ -61,11 +61,11 @@ jobs:
 
     # Run the definition validation script
     - name: Validate definitions
-      run: npm run validate
+      run: pnpm run validate
 
     # Run the type generating script
     - name: Generate types
-      run: npm run types
+      run: pnpm run types
 
     # Bump version (if releasing)
     - name: Bump version
