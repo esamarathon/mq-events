@@ -15,12 +15,12 @@
     "validate": "ts-node validate_definitions.ts"
   },
   "devDependencies": {
-    "@types/fs-extra": "^9.0.13",
-    "ajv": "^8.8.2",
-    "fs-extra": "^10.0.0",
-    "json-schema-to-typescript": "^10.1.5",
-    "jsonschema": "^1.4.0",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.5.4"
+    "@types/fs-extra": "^11.0.4",
+    "ajv": "^8.16.0",
+    "fs-extra": "^11.2.0",
+    "json-schema-to-typescript": "^14.1.0",
+    "jsonschema": "^1.4.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.3"
   }
 }

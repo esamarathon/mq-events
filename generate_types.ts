@@ -4,10 +4,10 @@ import { compileFromFile } from 'json-schema-to-typescript';
 async function generate(): Promise<void> {
   try {
     const dirs = readdirSync('./definitions', { withFileTypes: true }).filter((d) => d.isDirectory());
-    const index = [];
+    const index: string[] = [];
     for (const dir of dirs) {
       mkdirSync(`./types/${dir.name}`, { recursive: true });
-      const dirTypes = [];
+      const dirTypes: string[] = [];
       const files = readdirSync(`./definitions/${dir.name}`);
       for (const file of files) {
         const name = file.replace(/.json$/, '');
@@ -23,7 +23,7 @@ async function generate(): Promise<void> {
       }
 
       // Creating the index.d.ts file for each group.
-      const subIndex = [];
+      const subIndex: string[] = [];
       subIndex.push(...dirTypes.map((t) => `import { ${t} as ${t}_ } from './${t}'\n`));
       subIndex.push(`\nexport namespace ${dir.name} {\n`);
       subIndex.push(...dirTypes.map((t) => `  interface ${t} extends ${t}_ {}\n`));
