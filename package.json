@@ -1,6 +1,6 @@
 {
   "name": "@esamarathon/mq-events",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Repository holding information about the events published to our Message Queue server.",
   "homepage": "https://github.com/esamarathon/mq-events#readme",
   "bugs": {
