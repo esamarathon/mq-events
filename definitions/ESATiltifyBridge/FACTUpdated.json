@@ -1,0 +1,135 @@
+{
+  "$comment": "Sourced from https://github.com/esamarathon/ESATiltifyBridge/blob/master/WebApi/Tiltify/Models/Fact.cs",
+  "$schema": "../../schemas/event-schema.json",
+  "$meta": {
+    "name": "FACTUpdated",
+    "exchange": "tiltify",
+    "routingKey": "<campaign_slug>.fact.updated",
+    "ownerTool": "ESATiltifyBridge"
+  },
+  "definitions": {
+    "amount": {
+      "type": "object",
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "image": {
+      "type": "object"
+    },
+    "factOwner": {
+      "type": "object",
+      "properties": {
+        "avatar": {
+          "$ref": "#/definitions/image"
+        },
+        "description": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "legacy_id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "username": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "total_amount_raised": {
+          "$ref": "#/definitions/amount"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "properties": {
+    "amount_raised": {
+      "$ref": "#/definitions/amount"
+    },
+    "avatar": {
+      "$ref": "#/definitions/image"
+    },
+    "currency_code": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "donate_url": {
+      "type": "string"
+    },
+    "goal": {
+      "$ref": "#/definitions/amount"
+    },
+    "has_schedule": {
+      "type": "boolean"
+    },
+    "id": {
+      "$ref": "../../schemas/event-schema.json#/definitions/uuid"
+    },
+    "inserted_at": {
+      "type": "string"
+    },
+    "legacy_id": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "original_goal": {
+      "$ref": "#/definitions/amount"
+    },
+    "published_at": {
+      "type": "string"
+    },
+    "retired_at": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "supportable": {
+      "type": "string"
+    },
+    "supporting_amount_raised": {
+      "$ref": "#/definitions/amount"
+    },
+    "team": {
+      "$ref": "#/definitions/factOwner"
+    },
+    "team_id": {
+      "type": "string"
+    },
+    "user": {
+      "$ref": "#/definitions/factOwner"
+    },
+    "user_id": {
+      "type": "string"
+    },
+    "total_amount_raised": {
+      "$ref": "#/definitions/amount"
+    },
+    "updated_at": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    }
+  }
+}

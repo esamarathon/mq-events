@@ -1,0 +1,93 @@
+{
+  "$comment": "Sourced from https://github.com/esamarathon/ESATiltifyBridge/blob/master/WebApi/Tiltify/Models/DonationUpdateData.cs",
+  "$schema": "../../schemas/event-schema.json",
+  "$meta": {
+    "name": "DonationUpdated",
+    "exchange": "tiltify",
+    "routingKey": "<slug>.donation",
+    "ownerTool": "ESATiltifyBridge"
+  },
+  "definitions": {
+    "amount": {
+      "type": "object",
+      "properties": {
+        "currency": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "id"
+  ],
+  "properties": {
+    "amount": {
+      "$ref": "#/definitions/amount"
+    },
+    "campaign_id": {
+      "$ref": "../../schemas/event-schema.json#/definitions/uuid"
+    },
+    "completed_at": {
+      "type": "string"
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "donor_comment": {
+      "type": "string"
+    },
+    "donor_name": {
+      "type": "string"
+    },
+    "fundraising_event_id": {
+      "type": "string"
+    },
+    "id": {
+      "$ref": "../../schemas/event-schema.json#/definitions/uuid"
+    },
+    "legacy_id": {
+      "type": "number"
+    },
+    "poll_id": {
+      "type": "string"
+    },
+    "poll_option_id": {
+      "type": "string"
+    },
+    "reward_id": {
+      "type": "string"
+    },
+    "reward_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "$ref": "../../schemas/event-schema.json#/definitions/uuid"
+          },
+          "reward_id": {
+            "$ref": "../../schemas/event-schema.json#/definitions/uuid"
+          },
+          "quantity": {
+            "type": "number"
+          },
+          "custom_question": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sustained": {
+      "type": "boolean"
+    },
+    "target_id": {
+      "type": "string"
+    },
+    "team_event_id": {
+      "$ref": "../../schemas/event-schema.json#/definitions/uuid"
+    }
+  }
+}
