@@ -1,0 +1,23 @@
+{
+	"$schema": "../../schemas/event-schema.json",
+	"$meta": {
+		"name": "GraneIsPlaying",
+		"exchange": "crane",
+		"routingKey": "isplaying",
+		"ownerTool": "TwitchPlaysCraneGame"
+	},
+	"required": [],
+	"properties": {
+		"PlayerName": {
+			"type": "string",
+			"description": "Name of the player requesting to play.",
+			"examples": [
+				"(Anonymous)",
+				"alias",
+				"Zephyyrr",
+				"Edenal"
+			]
+		}
+	},
+	"additionalProperties": false
+}
